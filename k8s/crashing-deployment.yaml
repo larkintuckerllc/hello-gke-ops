@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: crashing
+  name: crashing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crashing
+  template:
+    metadata:
+      labels:
+        app: crashing
+    spec:
+      containers:
+      - image: ubuntu
+        name: ubuntu
+        command: ['/bin/bash', '-c', '--']
+        args: ['echo hello world; sleep 30; exit 1']

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: logging
+  name: logging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logging
+  template:
+    metadata:
+      labels:
+        app: logging
+    spec:
+      containers:
+      - image: ubuntu
+        name: ubuntu
+        command: ['/bin/bash', '-c', '--']
+        args: ['while true; do echo hello world; sleep 30; done;']
